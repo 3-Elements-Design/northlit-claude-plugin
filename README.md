@@ -39,7 +39,7 @@ full brief-to-prototype pass.
 
 ## What the server exposes
 
-54 tools, all acting as the signed-in user. Tools marked billable
+55 tools, all acting as the signed-in user. Tools marked billable
 spend the account's credits — the agent is told the balance up front (`whoami`)
 and refusals carry an upgrade path instead of failing silently.
 
@@ -90,7 +90,8 @@ and refusals carry an upgrade path instead of failing silently.
 
 ### Imagery
 
-- `generate_image` — **billable** — ONE image from a prompt — lands on its own editable canvas.
+- `list_models` — Model catalog — image (flat 1 credit) + priced video models; ids feed generate_image / generate_video.
+- `generate_image` — **billable** — ONE image from a prompt — lands on its own editable canvas; optional model pick.
 - `upload_reference_image` — Rehost a local image (data URL) to a usable https reference URL.
 - `view_image` — Render any Northlit-hosted image inline in the chat.
 - `image_to_prompt` — **billable** — Reverse-prompt an image for ui/image/video scopes.
