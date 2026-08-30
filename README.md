@@ -39,7 +39,7 @@ full brief-to-prototype pass.
 
 ## What the server exposes
 
-55 tools, all acting as the signed-in user. Tools marked billable
+56 tools, all acting as the signed-in user. Tools marked billable
 spend the account's credits — the agent is told the balance up front (`whoami`)
 and refusals carry an upgrade path instead of failing silently.
 
@@ -62,8 +62,9 @@ and refusals carry an upgrade path instead of failing silently.
 - `create_exploration` — **billable** — Start a run from a brief — a board of direction mocks; returns openUrl + project.
 - `check_progress` — Poll a run's pipeline phase and per-direction milestones.
 - `generate_mocks` — **billable** — Generate board image mocks for directions without them.
-- `add_directions` — **billable** — More directions on an EXISTING board — extend, don't re-create.
-- `generate_variations` — **billable** — Child variations of a card, on the same canvas.
+- `add_directions` — **billable** — More TOP-LEVEL directions on an existing board (no parent card).
+- `generate_variations` — **billable** — Child variations OF a card — attached under it, its image as edit base.
+- `reparent_card` — Attach an orphan top-level card under another card (childless cards only).
 - `list_directions` — All directions in a run.
 - `read_direction` — One direction's full markdown.
 - `read_run` — A run's AGENTS.md — the entry point before other reads.
