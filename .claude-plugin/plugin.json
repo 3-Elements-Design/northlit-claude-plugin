@@ -1,0 +1,22 @@
+{
+  "name": "northlit",
+  "displayName": "Northlit",
+  "version": "0.1.0",
+  "description": "AI design studio: explore a brief as a board of direction mocks, build working HTML prototypes, generate video, publish — from Claude Code.",
+  "author": {
+    "name": "Northlit",
+    "email": "support@northlit.ai",
+    "url": "https://northlit.ai"
+  },
+  "homepage": "https://northlit.ai",
+  "repository": "https://github.com/3-Elements-Design/northlit-claude-plugin",
+  "license": "MIT",
+  "keywords": [
+    "design",
+    "mcp",
+    "images",
+    "prototypes",
+    "video",
+    "branding"
+  ]
+}

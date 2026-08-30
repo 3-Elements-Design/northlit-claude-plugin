@@ -1,0 +1,17 @@
+{
+  "name": "northlit",
+  "description": "Northlit — AI design studio. One plugin: slash commands plus the hosted MCP server (OAuth, no keys).",
+  "owner": {
+    "name": "Northlit",
+    "email": "support@northlit.ai",
+    "url": "https://northlit.ai"
+  },
+  "plugins": [
+    {
+      "name": "northlit",
+      "source": "./",
+      "description": "Northlit's MCP server plus /northlit:* commands — briefs to boards, prototypes, video, and published URLs.",
+      "version": "0.1.0"
+    }
+  ]
+}
