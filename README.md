@@ -65,7 +65,7 @@ and refusals carry an upgrade path instead of failing silently.
 - `add_directions` — **billable** — More TOP-LEVEL directions on an existing board (no parent card).
 - `generate_variations` — **billable** — Child variations OF a card — attached under it, its image as edit base.
 - `reparent_card` — Attach an orphan top-level card under another card (childless cards only).
-- `list_directions` — All directions in a run.
+- `list_directions` — Directions in a run with their mocks — renders as an inline gallery in ChatGPT.
 - `read_direction` — One direction's full markdown.
 - `read_run` — A run's AGENTS.md — the entry point before other reads.
 - `read_moodboard` — A run's moodboard as markdown.
