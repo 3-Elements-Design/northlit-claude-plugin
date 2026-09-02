@@ -39,7 +39,7 @@ full brief-to-prototype pass.
 
 ## What the server exposes
 
-58 tools, all acting as the signed-in user. Tools marked billable
+61 tools, all acting as the signed-in user. Tools marked billable
 spend the account's credits — the agent is told the balance up front (`whoami`)
 and refusals carry an upgrade path instead of failing silently.
 
@@ -72,6 +72,8 @@ and refusals carry an upgrade path instead of failing silently.
 - `read_activity` — Reverse-chronological audit log of a run.
 - `upscale_image` — **billable** — Upscale a direction's mock to 4K.
 - `diff_directions` — Deterministic axis-by-axis diff of two directions.
+- `critique_design` — **billable** — Principal-designer critique of a card — 0-100 scores, ranked issues, refine-ready fixPrompt.
+- `present_board` — One composed side-by-side grid of a board's direction mocks — the comparison view for decision moments.
 
 ### Prototypes
 
@@ -95,6 +97,7 @@ and refusals carry an upgrade path instead of failing silently.
 - `generate_image` — **billable** — ONE image from a prompt — lands on its own editable canvas; optional model pick.
 - `upload_reference_image` — Rehost a local image (data URL) to a usable https reference URL.
 - `view_image` — Render any Northlit-hosted image inline in the chat.
+- `present_images` — Inline gallery widget of finished images — the display path for ChatGPT.
 - `image_to_prompt` — **billable** — Reverse-prompt an image for ui/image/video scopes.
 
 ### Video & 3D
