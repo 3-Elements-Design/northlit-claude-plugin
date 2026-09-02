@@ -57,7 +57,7 @@ full brief-to-prototype pass.
 
 ## What the server exposes
 
-61 tools, all acting as the signed-in user. Tools marked billable
+63 tools, all acting as the signed-in user. Tools marked billable
 spend the account's credits — the agent is told the balance up front (`whoami`)
 and refusals carry an upgrade path instead of failing silently.
 
@@ -73,6 +73,8 @@ and refusals carry an upgrade path instead of failing silently.
 - `list_moodboards` — Your moodboards, grouped by project.
 - `list_brands` — Your brand libraries — id, name, locked state.
 - `read_brand` — One brand's full DNA — palette, type, voice, logos.
+- `set_project_brand` — Attach a brand to a project as its DNA — copies spec + logo, locks it.
+- `extract_brand` — Brand DNA from a live website — exact colors, fonts, logo file, screenshots; create: true mints it.
 - `list_design_systems` — Saved design systems — conform explorations via systemIds.
 
 ### Explorations & boards
