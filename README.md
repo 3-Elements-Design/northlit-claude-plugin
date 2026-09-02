@@ -118,7 +118,7 @@ and refusals carry an upgrade path instead of failing silently.
 ### Design systems & exports
 
 - `read_design_system` — A run's design system as markdown.
-- `render_design_md` — Deterministic design.md from a system's spec block.
+- `render_design_md` — Deterministic design.md from a system's spec block or a brand's DNA (brandId).
 - `export_dtcg` — Deterministic W3C Design Tokens (DTCG) JSON export.
 
 ### Pixel-perfect kit
