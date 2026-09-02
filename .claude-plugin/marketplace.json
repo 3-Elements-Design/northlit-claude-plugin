@@ -11,7 +11,7 @@
       "name": "northlit",
       "source": "./",
       "description": "Northlit's MCP server plus /northlit:* commands — briefs to boards, prototypes, video, and published URLs.",
-      "version": "0.1.7"
+      "version": "0.1.8"
     }
   ]
 }
