@@ -69,7 +69,7 @@ and refusals carry an upgrade path instead of failing silently.
 ### Workspace
 
 - `list_projects` — Projects (brands/workspaces) you own or share.
-- `list_runs` — Your explorations, newest first.
+- `list_runs` — Your explorations (mine) and boards shared with you (sharedWithMe), newest first.
 - `list_moodboards` — Your moodboards, grouped by project.
 - `list_brands` — Your brand libraries — id, name, locked state.
 - `read_brand` — One brand's full DNA — palette, type, voice, logos.
