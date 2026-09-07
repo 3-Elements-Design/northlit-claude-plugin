@@ -106,7 +106,7 @@ and refusals carry an upgrade path instead of failing silently.
 - `read_chat` — The chat timeline for one direction.
 - `publish_prototype` — Deploy a prototype to its public share URL.
 - `unpublish_prototype` — Take a published prototype offline.
-- `import_prototype` — Bring existing built HTML files in as a prototype canvas (index.html + assets) — the Upload flow as a tool.
+- `import_prototype` — Bring existing built HTML files in (index.html + assets) — a new canvas, or attached to an existing one with runId + directionId.
 - `get_build_link` — Tokenized handoff URL any coding agent can fetch.
 - `generate_prototype_image` — **billable** — Generate a hosted raster image INTO an existing prototype.
 - `crop_mock_region` — Crop a region out of a direction's source mock (hosted URL).
