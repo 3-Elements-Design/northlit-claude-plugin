@@ -57,7 +57,7 @@ full brief-to-prototype pass.
 
 ## What the server exposes
 
-65 tools, all acting as the signed-in user. Tools marked billable
+66 tools, all acting as the signed-in user. Tools marked billable
 spend the account's credits — the agent is told the balance up front (`whoami`)
 and refusals carry an upgrade path instead of failing silently.
 
@@ -142,6 +142,7 @@ and refusals carry an upgrade path instead of failing silently.
 - `read_design_system` — A run's design system as markdown.
 - `render_design_md` — Deterministic design.md from a system's spec block or a brand's DNA (brandId).
 - `export_dtcg` — Deterministic W3C Design Tokens (DTCG) JSON export.
+- `export_react` — **billable** — A built prototype as a React + TypeScript project: one component per section, tokens.css + globals.css, Vite scaffold.
 
 ### Pixel-perfect kit
 
