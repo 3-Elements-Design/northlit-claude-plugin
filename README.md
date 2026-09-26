@@ -13,7 +13,7 @@ Not sure which route applies to you? Paste this into whatever agent you use
 the right way for itself, adds the design skill, and confirms the connection:
 
 ```text
-Set up Northlit for me in this environment and confirm it works. Northlit is an AI design studio (boards of design-direction mocks, working HTML prototypes, images, video) exposed as an MCP server.
+Set up Northlit for me in this environment and confirm it works. Northlit is an AI design suite (boards of design-direction mocks, working HTML prototypes, images, video) exposed as an MCP server.
 
 1. Connect the Northlit MCP server — remote HTTP at https://northlit.ai/api/mcp, OAuth 2.1 with dynamic client registration (a browser sign-in; no keys to paste). Use the route for the agent you are:
    - Claude Code: run `claude mcp add --transport http northlit https://northlit.ai/api/mcp` — or install the plugin with `/plugin marketplace add 3-Elements-Design/northlit-claude-plugin` then `/plugin install northlit@northlit`.
@@ -57,7 +57,7 @@ full brief-to-prototype pass.
 
 ## What the server exposes
 
-66 tools, all acting as the signed-in user. Tools marked billable
+82 tools, all acting as the signed-in user. Tools marked billable
 spend the account's credits — the agent is told the balance up front (`whoami`)
 and refusals carry an upgrade path instead of failing silently.
 
@@ -69,13 +69,33 @@ and refusals carry an upgrade path instead of failing silently.
 ### Workspace
 
 - `list_projects` — The user's current project (selected in the app), owned projects, and projects shared with them.
+- `create_project` — Mint an empty project — somewhere to put a new brand without overwriting an existing one's DNA.
 - `list_runs` — Your explorations (mine) and boards shared with you (sharedWithMe), newest first.
 - `list_moodboards` — Your moodboards, grouped by project.
 - `list_brands` — Your brand libraries — id, name, locked state.
 - `read_brand` — One brand's full DNA — palette, type, voice, logos.
 - `set_project_brand` — Attach a brand to a project as its DNA — copies spec + logo, locks it.
 - `extract_brand` — Brand DNA from a live website — exact colors, fonts, logo file, screenshots; create: true mints it.
+- `create_brand` — Mint a brand in the library from a brand-spec you write — the from-scratch step when there is no site to extract.
+- `update_brand_spec` — Rewrite one or more sections of a brand's spec, leaving the rest as it was; identity edits ask a person.
 - `list_design_systems` — Saved design systems — conform explorations via systemIds.
+
+### Boards
+
+- `create_board` — Start a board: open a run as one (idempotent), or start fresh with a blank section.
+- `read_board` — What is on the board a run was opened as — its sections and the full text of its notes, with ids and positions.
+- `add_note` — Put a markdown note on a board — a brief, a rationale, what to try next. Free.
+- `update_note` — Replace a note's markdown, wholesale. Note ids come from read_board.
+- `add_reference` — Pin one of our images on a board as a reference to design against.
+- `place_nodes` — Arrange a board — move its notes and section frames to canvas coordinates.
+- `create_section` — A new, empty section on a board: a blank run of its own. Generate into the run id it returns.
+
+### Brand books
+
+- `list_brand_books` — Brand books in a project — check here before minting another.
+- `read_brand_book` — Which brand-world artifacts a book has, is making, or is missing.
+- `create_brand_book` — Mint a book from a project's brand DNA. Free — no imagery yet.
+- `generate_brand_world` — **billable** — Generate a book's imagery — all 11 artifacts or a named subset.
 
 ### Explorations & boards
 
@@ -84,6 +104,8 @@ and refusals carry an upgrade path instead of failing silently.
 - `generate_mocks` — **billable** — Generate board image mocks for directions without them.
 - `add_directions` — **billable** — More TOP-LEVEL directions on an existing board (no parent card).
 - `generate_variations` — **billable** — Child variations OF a card — attached under it, its image as edit base.
+- `start_logo_workflow` — **billable** — Kick off a logo set — 1-6 marks from a prompt and/or references, on their own canvas.
+- `start_lookbook` — **billable** — Kick off a lookbook — event renders, vignettes, catalog and overhead assets under the project's brand.
 - `reparent_card` — Attach an orphan top-level card under another card (childless cards only).
 - `list_directions` — Directions in a run with their mocks — renders as an inline gallery in ChatGPT.
 - `read_direction` — One direction's full markdown.

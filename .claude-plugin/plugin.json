@@ -1,7 +1,7 @@
 {
   "name": "northlit",
   "displayName": "Northlit",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "AI design studio: explore a brief as a board of direction mocks, build working HTML prototypes, generate video, publish — from Claude Code.",
   "author": {
     "name": "Northlit",
