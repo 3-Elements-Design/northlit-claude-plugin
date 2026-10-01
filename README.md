@@ -57,7 +57,7 @@ full brief-to-prototype pass.
 
 ## What the server exposes
 
-82 tools, all acting as the signed-in user. Tools marked billable
+104 tools, all acting as the signed-in user. Tools marked billable
 spend the account's credits — the agent is told the balance up front (`whoami`)
 and refusals carry an upgrade path instead of failing silently.
 
@@ -69,15 +69,21 @@ and refusals carry an upgrade path instead of failing silently.
 ### Workspace
 
 - `list_projects` — The user's current project (selected in the app), owned projects, and projects shared with them.
-- `create_project` — Mint an empty project — somewhere to put a new brand without overwriting an existing one's DNA.
+- `create_project` — Mint an empty project — somewhere of its own for new work and its brands.
 - `list_runs` — Your explorations (mine) and boards shared with you (sharedWithMe), newest first.
 - `list_moodboards` — Your moodboards, grouped by project.
-- `list_brands` — Your brand libraries — id, name, locked state.
+- `list_brands` — Your brand libraries — id, name, and where each sits in its brand tree.
 - `read_brand` — One brand's full DNA — palette, type, voice, logos.
-- `set_project_brand` — Attach a brand to a project as its DNA — copies spec + logo, locks it.
+- `search_brand` — Passages from a brand's stored sources and its ancestors', by meaning and exact words, each with where it came from.
+- `set_project_brand` — Add a brand to a project's brands; a project with no brand DNA takes it as its DNA too.
+- `remove_project_brand` — Take a brand out of a project's brands; the brand itself is untouched.
 - `extract_brand` — Brand DNA from a live website — exact colors, fonts, logo file, screenshots; create: true mints it.
 - `create_brand` — Mint a brand in the library from a brand-spec you write — the from-scratch step when there is no site to extract.
-- `update_brand_spec` — Rewrite one or more sections of a brand's spec, leaving the rest as it was; identity edits ask a person.
+- `create_sub_brand` — Add a sub-brand or product under a brand; its spec says only what differs and inherits the rest.
+- `make_product_nodes` — Turn the products a brand lists into product nodes under it, each with its own spec and photos.
+- `add_brand_artifact` — Add to a brand: a source (capture a page or a PDF, or text; search_brand reads it) or an approved example image its new work takes as a style reference.
+- `record_brand_decision` — Record a decision about a brand in its memory: house notes its work reads next to the Spec, not binding.
+- `update_brand_spec` — Rewrite one or more sections of a brand's spec, leaving the rest as it was; identity and requirements edits ask a person.
 - `list_design_systems` — Saved design systems — conform explorations via systemIds.
 
 ### Boards
@@ -94,6 +100,8 @@ and refusals carry an upgrade path instead of failing silently.
 
 - `list_brand_books` — Brand books in a project — check here before minting another.
 - `read_brand_book` — Which brand-world artifacts a book has, is making, or is missing.
+- `share_brand_book` — Mint the PUBLIC view-only /bb/… link for a brand book (bookId or projectId); idempotent.
+- `unshare_brand_book` — Disable a brand book's public link (the same link re-enables later).
 - `create_brand_book` — Mint a book from a project's brand DNA. Free — no imagery yet.
 - `generate_brand_world` — **billable** — Generate a book's imagery — all 11 artifacts or a named subset.
 
@@ -116,6 +124,8 @@ and refusals carry an upgrade path instead of failing silently.
 - `diff_directions` — Deterministic axis-by-axis diff of two directions.
 - `critique_design` — **billable** — Principal-designer critique of a card — 0-100 scores, ranked issues, refine-ready fixPrompt.
 - `present_board` — One composed side-by-side grid of a board's direction mocks — the comparison view for decision moments.
+- `share_board` — Mint the PUBLIC view-only /b/… link for a run's board; idempotent.
+- `unshare_board` — Disable a board's public link (the same link re-enables later).
 
 ### Prototypes
 
@@ -149,6 +159,18 @@ and refusals carry an upgrade path instead of failing silently.
 - `generate_video` — **billable** — Image-to-video render on the model registry.
 - `check_video_status` — Poll a video job; the finished clip is billed on delivery.
 - `save_video` — Persist a finished clip to a run — rehosted + indexed.
+- `read_timeline` — A video project's timeline (videoDocId) — tracks, clips, ids, times, end marker, its board; no id lists the video projects.
+- `edit_timeline` — Queue add/update/remove/move clip edits and the end marker onto a video project (videoDocId; one undo step).
+- `list_media` — The person's uploads and generated clips, audio and images (with their canvas; runId filters to one) — URLs for the timeline.
+- `video_options` — Video models with their text/image/reference modes, lengths, aspects; lip-sync models; camera moves; voiceover voices.
+- `generate_clip` — **billable** — Text, image or references (image/video/audio) to video, or lip sync a face to audio — lands via check_clip.
+- `check_clip` — Poll a generate_clip job; on delivery bill, save to the Library, place on the timeline, return a download link.
+- `generate_voiceover` — **billable** — Text to speech (ElevenLabs v3) saved to the Library — a speech track for lip sync or the timeline.
+- `generate_music` — **billable** — An instrumental cue at a chosen BPM, saved to the Library and placed with its tempo — the editor finds the beat grid for cutting on hits.
+- `generate_captions` — Transcribe a video project's speech with word timings and place it as captions on a Captions track (burned into the export; .srt from the Export menu).
+- `analyze_video` — **billable** — Break a video down: its shot list (cuts, times, pacing) and a numbered, timed contact sheet.
+- `preview_motion` — Stills of a motion-graphics composition you wrote, seeked like the renderer, on a contact sheet — over a backdrop; checks the render contract.
+- `render_motion` — **billable** — Render your motion-graphics composition to a clip — opaque mp4, or a transparent webm overlay; lands via check_clip.
 - `generate_3d` — **billable** — Turn a direction's mock into a 3D GLB model.
 
 ### Design knowledge

@@ -1,11 +1,11 @@
 {
   "name": "northlit",
   "displayName": "Northlit",
-  "version": "0.1.14",
+  "version": "0.1.16",
   "description": "AI design studio: explore a brief as a board of direction mocks, build working HTML prototypes, generate video, publish — from Claude Code.",
   "author": {
     "name": "Northlit",
-    "email": "support@northlit.ai",
+    "email": "northlit_support@hangarx.ai",
     "url": "https://northlit.ai"
   },
   "homepage": "https://northlit.ai",
