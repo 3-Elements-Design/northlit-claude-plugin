@@ -1,8 +1,8 @@
 {
   "name": "northlit",
   "displayName": "Northlit",
-  "version": "0.1.17",
-  "description": "AI design suite: the best image and video models, your brand context, and your marketing intelligence in one place — on-brand images, video and prototypes, with real editing tools — from Claude Code.",
+  "version": "0.1.18",
+  "description": "An AI Creative Director for your team: explore many directions at once, every one on brand through the Brand Graph, then build, edit and ship images, video and prototypes — from Claude Code.",
   "author": {
     "name": "Northlit",
     "email": "northlit_support@hangarx.ai",

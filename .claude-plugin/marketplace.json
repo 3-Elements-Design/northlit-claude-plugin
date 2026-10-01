@@ -1,6 +1,6 @@
 {
   "name": "northlit",
-  "description": "Northlit — the AI design suite. One plugin: slash commands plus the hosted MCP server (OAuth, no keys).",
+  "description": "Northlit — an AI Creative Director that keeps every idea on brand. One plugin: slash commands plus the hosted MCP server (OAuth, no keys).",
   "owner": {
     "name": "Northlit",
     "email": "northlit_support@hangarx.ai",
@@ -10,8 +10,8 @@
     {
       "name": "northlit",
       "source": "./",
-      "description": "Northlit's MCP server plus /northlit:* commands — on-brand images, video, boards and prototypes on the best models, with editing tools and public links.",
-      "version": "0.1.17"
+      "description": "Northlit's MCP server plus /northlit:* commands — explore directions, generate on-brand images and video, build and publish prototypes, edit with real tools.",
+      "version": "0.1.18"
     }
   ]
 }
