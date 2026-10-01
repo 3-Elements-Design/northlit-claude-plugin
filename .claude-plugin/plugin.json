@@ -1,8 +1,8 @@
 {
   "name": "northlit",
   "displayName": "Northlit",
-  "version": "0.1.16",
-  "description": "AI design studio: explore a brief as a board of direction mocks, build working HTML prototypes, generate video, publish — from Claude Code.",
+  "version": "0.1.17",
+  "description": "AI design suite: the best image and video models, your brand context, and your marketing intelligence in one place — on-brand images, video and prototypes, with real editing tools — from Claude Code.",
   "author": {
     "name": "Northlit",
     "email": "northlit_support@hangarx.ai",
