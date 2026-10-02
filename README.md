@@ -193,7 +193,7 @@ and refusals carry an upgrade path instead of failing silently.
 - `render_html` — Headless Chromium render of HTML to a PNG screenshot.
 - `diff_against_mock` — **billable** — Render HTML and score it against a target mock with fixes.
 - `ground_truth_hints` — OCR blocks, layers, and regions extracted from a mock.
-- `pixel_perfect_html` — **billable** — Run the render→diff→fix loop until HTML matches a mock.
+- `match_html_to_mock` — **billable** — Run the render→diff→fix loop until HTML matches a mock.
 
 ### Advanced (stateless)
 
