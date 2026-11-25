@@ -48,6 +48,8 @@ free trial credits.
 | `/northlit:image <prompt>` | Generate one image on its own editable canvas. |
 | `/northlit:prototype` | Build a direction into a working HTML prototype and iterate on it. |
 | `/northlit:video` | Animate an image into a video clip. |
+| `/northlit:3d <what to model>` | Build a 3D model or scene — three.js rendered server-side; turn it, re-light it, export the GLB. |
+| `/northlit:apparel-3d <garment views>` | A garment as a production 3D model — Northlit generates once (Hunyuan v3.1 Pro), Blender on your machine finishes it true to the image (panel UVs + baked texture) or clean for a configurator (separate recolourable pieces). |
 | `/northlit:brand` | Read your brand DNA and design on-brand. |
 | `/northlit:status` | Your plan, remaining credits, and recent work. |
 
@@ -57,7 +59,7 @@ full brief-to-prototype pass.
 
 ## What the server exposes
 
-104 tools, all acting as the signed-in user. Tools marked billable
+120 tools, all acting as the signed-in user. Tools marked billable
 spend the account's credits — the agent is told the balance up front (`whoami`)
 and refusals carry an upgrade path instead of failing silently.
 
@@ -74,6 +76,7 @@ and refusals carry an upgrade path instead of failing silently.
 - `list_moodboards` — Your moodboards, grouped by project.
 - `list_brands` — Your brand libraries — id, name, and where each sits in its brand tree.
 - `read_brand` — One brand's full DNA — palette, type, voice, logos.
+- `get_brand_logo` — A brand's logo files (primary + every lockup/scheme variant) with 7-day download links that need no auth header.
 - `search_brand` — Passages from a brand's stored sources and its ancestors', by meaning and exact words, each with where it came from.
 - `set_project_brand` — Add a brand to a project's brands; a project with no brand DNA takes it as its DNA too.
 - `remove_project_brand` — Take a brand out of a project's brands; the brand itself is untouched.
@@ -154,6 +157,11 @@ and refusals carry an upgrade path instead of failing silently.
 - `present_images` — Inline gallery widget of finished images — the display path for ChatGPT.
 - `image_to_prompt` — **billable** — Reverse-prompt an image for ui/image/video scopes.
 
+### Social
+
+- `write_caption` — **billable** — On-brand captions per network (Instagram, Facebook, LinkedIn, TikTok, YouTube, X, Threads), fitted to each limit and judged against the brand's voice and claims.
+- `compose_carousel` — **billable** — A planned carousel (hook, body, CTA slides) rendered on-brand on one canvas, with its caption.
+
 ### Video & 3D
 
 - `generate_video` — **billable** — Image-to-video render on the model registry.
@@ -168,10 +176,21 @@ and refusals carry an upgrade path instead of failing silently.
 - `generate_voiceover` — **billable** — Text to speech (ElevenLabs v3) saved to the Library — a speech track for lip sync or the timeline.
 - `generate_music` — **billable** — An instrumental cue at a chosen BPM, saved to the Library and placed with its tempo — the editor finds the beat grid for cutting on hits.
 - `generate_captions` — Transcribe a video project's speech with word timings and place it as captions on a Captions track (burned into the export; .srt from the Export menu).
+- `export_video` — Render a video project to an MP4 on the server (no editor or browser needed) — fetch it via check_export.
+- `check_export` — Poll an export_video job; when done, a download link that needs no auth header, kept 7 days.
 - `analyze_video` — **billable** — Break a video down: its shot list (cuts, times, pacing) and a numbered, timed contact sheet.
 - `preview_motion` — Stills of a motion-graphics composition you wrote, seeked like the renderer, on a contact sheet — over a backdrop; checks the render contract.
 - `render_motion` — **billable** — Render your motion-graphics composition to a clip — opaque mp4, or a transparent webm overlay; lands via check_clip.
-- `generate_3d` — **billable** — Turn a direction's mock into a 3D GLB model.
+- `generate_3d` — **billable** — Turn a mock (or 1-4 hosted views) into a 3D GLB, any registry 3D model; LowPoly quads also return an OBJ.
+- `retexture_3d` — **billable** — Paint a new texture onto an existing mesh from a reference image (TRELLIS.2) — re-unwraps it.
+- `create_scene` — Start a three.js scene as a card — empty stage, your module, or an imported GLB — rendered server-side to a contact sheet.
+- `read_scene` — A scene's head revision: module source, object graph, assets, revisions, contact sheet.
+- `edit_scene` — Commit the next revision of a scene from a resubmitted module; renders a contact sheet; stale revisions are refused.
+- `import_scene_asset` — Bring a hosted GLB, texture or HDRI into a scene under a name the module quotes.
+- `render_scene` — **billable** — Named views and turntables of a scene revision; finals land as cards.
+- `export_scene` — A scene revision as a compressed GLB (lands a 3D model card) or its module source.
+- `revert_scene` — Make an earlier scene revision the head again.
+- `generate_scene_angles` — **billable** — A finished photographic image from a scene revision's render — the 3D view fixes camera, framing, placement and light; brand, product and model as generate_image.
 
 ### Design knowledge
 
@@ -180,6 +199,8 @@ and refusals carry an upgrade path instead of failing silently.
 - `semantic_search` — Vector search across skills and run artifacts.
 - `search_inspiration` — Vibe-search the curated inspiration gallery — free.
 - `get_inspiration` — One inspiration item in full — prompt, image, palette; adapt via create_exploration.
+- `search_community` — Search published Brand DNA, ads and reels on Northlit Community — free.
+- `get_published_dna` — A published brand's palette, type and voice — json, md, DESIGN.md or DTCG tokens, with attribution — free.
 
 ### Design systems & exports
 
